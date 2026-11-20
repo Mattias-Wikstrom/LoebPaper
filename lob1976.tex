@@ -1,0 +1,894 @@
+% Löb, M. H. (1976). Embedding First Order Predicate Logic in Fragments of
+% Intuitionistic Logic. The Journal of Symbolic Logic, 41(4), 705–718.
+% Transcribed from scan. Some mathematical expressions marked [?] where the
+% scan was ambiguous.
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{enumitem}
+
+\geometry{margin=1.25in}
+
+%% ---- Shortcuts -------------------------------------------------------
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fM}{\mathfrak{M}}
+%% Universal quantifier in the style of the paper: (x)A(x)
+%% Written inline as, e.g., $(\eta)\fA(\eta)$
+
+%% ---- Theorem environments --------------------------------------------
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{theorem}[lemma]{Theorem}
+
+%% ---- Inference rule (fraction style) ---------------------------------
+%% Usage: \infrule{premise(s)}{conclusion}
+%% For named rules use, e.g., $\dfrac{P}{C}\;{\to}R$
+%% Two-premise rules: \dfrac{P_1 \quad P_2}{C}
+
+\begin{document}
+
+%% -----------------------------------------------------------------------
+\begin{center}
+  {\large\bfseries
+    EMBEDDING FIRST ORDER PREDICATE LOGIC IN\\[4pt]
+    FRAGMENTS OF INTUITIONISTIC LOGIC}\\[10pt]
+  {\large M. H. L\"{O}B}\\[6pt]
+  \textit{The Journal of Symbolic Logic},
+  Vol.\,41, No.\,4 (Dec., 1976), pp.\,705--718
+\end{center}
+
+\bigskip
+
+Some syntactically simple fragments of intuitionistic logic possess
+considerably expressive power compared with their classical counterparts.
+
+In particular, we consider in this paper intuitionistic second order
+propositional logic (ISPL) a formalisation of which may be obtained by adding
+to the intuitionistic propositional calculus quantifiers binding propositional
+variables together with the usual quantifier rules and the axiom scheme
+$(Ex)(\mathfrak{A} = x)$, where $\mathfrak{A}$ is a formula not containing
+$x$.
+
+The main purpose of this paper is to show that the classical first order
+predicate calculus with identity can be (isomorphically) embedded in ISPL.
+
+It turns out an immediate consequence of this that the classical first order
+predicate calculus with identity can also be embedded in the fragment
+$(\mathrm{PL}_A)$ of the intuitionistic first order predicate calculus whose
+only logical symbols are $\to$ and $(.)$ (universal quantifier) and the only
+nonlogical symbol (apart from individual variables and parentheses) a single
+monadic predicate letter.
+
+Another consequence is that the classical first order predicate calculus can
+be embedded in the theory of Heyting algebras.
+
+The undecidability of the formal systems under consideration evidently follows
+immediately from the present results.
+
+We shall indicate how the methods employed may be extended to show also that
+the intuitionistic first order predicate calculus with identity can be embedded
+in both ISPL and $\mathrm{PL}_A$.
+
+For the purpose of the present paper it will be convenient to use the
+following formalisation $(S)$ of ISPL based on \cite{Schuttif1950}, rather
+than the one given above.
+
+%% -----------------------------------------------------------------------
+\bigskip
+\noindent\textbf{The formal system $S$.}\quad
+The symbols of $S$ are
+\begin{enumerate}
+\item free variables: $a, b, c, \ldots$,
+\item bound variables: $x, y, z, \ldots$,
+\item logical symbols: the symbol $\to$ for implication, and the symbol $(.)$
+  for universal quantification, where the dot stands for a bound variable,
+\item parentheses.
+\end{enumerate}
+
+\noindent\textbf{Formulae of $S$.}
+\begin{enumerate}
+\item any free variable is a formula,
+\item if $\mathfrak{A}$ and $\mathfrak{B}$ are formulae, then so is
+  $(\mathfrak{A} \to \mathfrak{B})$,
+\item if $\mathfrak{A}(\xi)$ is a formula in which the free variable $\xi$
+  occurs at certain places then $(\eta)\mathfrak{A}(\eta)$ is a formula,
+  provided $\eta$ is a bound variable not occurring in $\mathfrak{A}(\xi)$.
+\end{enumerate}
+
+An expression obtained from a formula by replacing some or all occurrences of
+free variables by bound variables will be called a \emph{quasi formula}.
+
+To simplify the notation we shall omit outermost parentheses from formulae.
+Furthermore we shall write
+$\mathfrak{A}_1, \mathfrak{A}_2, \cdots, \mathfrak{A}_n \to \mathfrak{B}$
+for the formula
+$\mathfrak{A}_1 \to (\mathfrak{A}_2 \to \cdots \to (\mathfrak{A}_n \to
+\mathfrak{B})\cdots)$.
+
+The formulae $\mathfrak{A}_1, \mathfrak{A}_2, \cdots, \mathfrak{A}_{n-1}$
+will be said to be the \emph{antecedents} and $\mathfrak{B}$ the
+\emph{succedent} of the formula
+$\mathfrak{A}_1, \mathfrak{A}_2, \cdots, \mathfrak{A}_n \to \mathfrak{B}$.
+
+Capital Greek letters will be used to denote sequences of formulae occurring
+as antecedents.
+
+In a formula of the form $\Gamma \to \mathfrak{B}$, $\Gamma$ may also be
+empty. If so the expression $\Gamma \to \mathfrak{B}$ stands for
+$\mathfrak{B}$. If $\mathfrak{A}$ is a formula of the form
+$\Gamma \to \mathfrak{B}$, and $\mathfrak{B}$ is a formula having no
+antecedents, then $\mathfrak{B}$ will be said to be the \emph{end formula}
+of $\mathfrak{A}$.
+
+\medskip
+\noindent\textbf{Axioms of $S$.}\quad
+All formulae of the form $\xi \to \xi$, where $\xi$ is a free variable.
+
+\medskip
+\noindent\textbf{Inferences of $S$.}\quad
+They fall into two classes.
+
+\smallskip
+\noindent\textit{I.\ Structural inferences.}
+\[
+\text{Permutation}\quad
+\dfrac{\Gamma,\,\mathfrak{A},\,\mathfrak{B},\,\Delta \to \mathfrak{C}}
+     {\Gamma,\,\mathfrak{B},\,\mathfrak{A},\,\Delta \to \mathfrak{C}}
+\qquad\qquad
+\text{Contraction}\quad
+\dfrac{\mathfrak{A},\,\mathfrak{A} \to \mathfrak{C}}
+      {\mathfrak{A} \to \mathfrak{C}}
+\]
+
+\noindent\textit{II.\ Genetic inferences.}
+\[
+{\to}R\quad
+\dfrac{\mathfrak{C}}{\mathfrak{A} \to \mathfrak{C}}
+\qquad\qquad
+{\to}L\quad
+\dfrac{\Gamma \to \mathfrak{A}\qquad\mathfrak{B} \to \mathfrak{C}}
+      {\Gamma,\,(\mathfrak{A} \to \mathfrak{B}) \to \mathfrak{C}}
+\]
+\[
+{(.)R}\quad
+\dfrac{\Gamma \to \mathfrak{A}(\xi)}{\Gamma \to (\eta)\mathfrak{A}(\eta)}
+\qquad\qquad
+{(.)L}\quad
+\dfrac{\mathfrak{A}(\mathfrak{B}) \to \mathfrak{C}}
+      {(\eta)\mathfrak{A}(\eta) \to \mathfrak{C}}
+\]
+
+The formula(e) above the stroke in an inference is (are) called
+\emph{premise(s)}, and the formula below the stroke is called
+\emph{conclusion} of the respective inference.
+
+In $(.)R$ the free variable $\xi$ must not occur in the conclusion.
+
+In the listed inferences formulae occurring as antecedents other than as
+members of $\Gamma$ or as succedents other than those designated by
+$\mathfrak{C}$ will be called \emph{principal formulae}.
+
+Derivations in $S$ are trees of formulae starting from axioms and leading
+downward by inferences to the lowest formula. The latter will be said to be
+\emph{derivable in $S$}.
+
+By the \emph{length} of a branch of a derivation we shall mean the number of
+formulae on the branch. The length of the longest branch will be called the
+\emph{length of the derivation}.
+
+%% -----------------------------------------------------------------------
+\medskip
+A formula $\mathfrak{A}$ will be said to be \emph{derivably equivalent} to a
+formula $\mathfrak{B}$ in $S$ if both $\mathfrak{A} \to \mathfrak{B}$ and
+$\mathfrak{B} \to \mathfrak{A}$ are derivable in $S$.
+
+Any two quasi formulae $\mathfrak{A}_x$ and $\mathfrak{B}_x$, obtained from
+the formulae $\mathfrak{A}$ and $\mathfrak{B}$, respectively, by the same
+substitution of bound variables (not occurring in $\mathfrak{A}$ and
+$\mathfrak{B}$) for free variables will be said to be \emph{derivably
+equivalent} if $\mathfrak{A}$ and $\mathfrak{B}$ are derivably equivalent.
+
+An important property of $S$ proved first in \cite{Prawitz1965} is that the
+cut
+\[
+\dfrac{\Gamma \to \mathfrak{A}\qquad\mathfrak{A} \to \mathfrak{C}}
+      {\Gamma \to \mathfrak{C}}
+\]
+is a derived rule, i.e.\ that if the premises $\Gamma \to \mathfrak{A}$ and
+$\mathfrak{A} \to \mathfrak{C}$ are derivable in $S$, then so is the
+conclusion $\Gamma \to \mathfrak{C}$.
+
+From this and \cite[p.\,67]{Prawitz1965} it follows in particular that $S$ is
+equivalent to the formalisation of ISPL given above. It also follows easily
+that the Hilbert type formalisation of ISPL is equivalent with $S$: the axioms
+are all formulae of the form
+\begin{align*}
+&\mathfrak{A} \to (\mathfrak{B} \to \mathfrak{A}),\\
+&(\mathfrak{A} \to (\mathfrak{B} \to \mathfrak{C}))
+  \to (\mathfrak{A} \to \mathfrak{B}) \to (\mathfrak{A} \to \mathfrak{C}),\\
+&(\xi)\mathfrak{A}(\xi) \to \mathfrak{A}(\mathfrak{B}).
+\end{align*}
+The inference rules are $(.)R$ and modus ponens
+\[
+\dfrac{\mathfrak{A}\qquad\mathfrak{A} \to \mathfrak{B}}{\mathfrak{B}}.
+\]
+
+%% -----------------------------------------------------------------------
+\begin{lemma}
+Let $\mathfrak{A}^{[\xi]}$ be the formula obtained from $\mathfrak{A}$ by
+replacing all occurrences of the free variable $\xi$ by the formula
+$\xi \to \xi$. For any formula $\mathfrak{A}$, the pair of formulae
+$\xi \to \mathfrak{A}$ and $\xi \to \mathfrak{A}^{[\xi]}$ are derivably
+equivalent in $S$.
+\end{lemma}
+
+\begin{proof}
+By induction on the complexity of $\mathfrak{A}$. (The complexity of formulae
+being the number of logical symbols occurring in it.)
+\end{proof}
+
+\begin{corollary}
+Let $\mathfrak{B}$ be a formula of the form
+$\mathfrak{A}_1, \mathfrak{A}_2, \cdots, \mathfrak{A}_n \to a$, where
+$\mathfrak{A}_i$ is of the form $\xi \to \mathfrak{B}_i$ ($\xi$ being a free
+variable). Then if $\mathfrak{B}^{[\xi]}$ is derivable in $S$ so is
+$\mathfrak{B}$.
+\end{corollary}
+
+\begin{proof}
+Suppose $\mathfrak{B}^{[\xi]}$ is derivable in $S$, then so is the formula
+$\mathfrak{B}_1^{[\xi]}, \cdots, \mathfrak{B}_n^{[\xi]}$ and hence also the
+formula
+$(\xi \to \mathfrak{B}_1^{[\xi]}), \cdots, (\xi \to \mathfrak{B}_n^{[\xi]})
+ \to (\xi \to \mathfrak{B}_{n+1}^{[\xi]})$.
+Then by Lemma~1, the formula
+$(\xi \to \mathfrak{B}_1), \cdots, (\xi \to \mathfrak{B}_n)
+ \to (\xi \to \mathfrak{B}_{n+1})$, i.e.\ $\mathfrak{B}$ is derivable in $S$.
+\end{proof}
+
+%% -----------------------------------------------------------------------
+By \emph{parameters} we shall mean certain distinguished free variables (to be
+specified in the context whenever necessary).
+
+A set $M$ of formulae will be said to be \emph{closed with respect to
+substitution of formulae} (c.s.f.), if whenever $\mathfrak{A}(\xi)$ is a
+formula of $M$ with $\xi$ a free variable other than a parameter,
+$\mathfrak{A}(\mathfrak{B})$ is also a formula of $M$ for any formula
+$\mathfrak{B}$ (provided $\mathfrak{A}(\mathfrak{B})$ is a formula).
+
+Let $M$ be a set of formulae of $S$ and $\xi$ a free variable. We define
+$C(M, \xi)$ to be the smallest closed set of primary formulae satisfying the
+following conditions.
+\begin{enumerate}[(i)]
+\item $\xi \in C(M, \xi)$,
+\item if $\mathfrak{A}$ and $\mathfrak{B}$ belong to $C(M, \xi)$, then
+  $\mathfrak{A} \to \mathfrak{B}$ is in $C(M, \xi)$,
+\item for each formula $\mathfrak{B}$, $\mathfrak{A}(\mathfrak{B})$ is in
+  $C(M, \xi)$ (for bound variables $\zeta$ such that
+  $(\zeta)\mathfrak{A}(\zeta)$ is a formula).
+\end{enumerate}
+
+A formula $\mathfrak{A}$ will be said to be an \emph{$M$-formula} if
+$\mathfrak{A}$ and all formulae in $\Gamma$ belong to $M$.
+
+To be a \emph{$(M,\xi)$-formula}, if $\mathfrak{A}$ is either an
+$M$-formula or belongs to $C(M, \xi)$.
+
+A tree of $(M,\xi)$-formulae which is constructed like a derivation in $S$
+except that any formula at the top of any branch is either an $M$-formula
+derivable in $S$ or a formula belonging to $C(M, \xi)$ of the form
+$\xi \to \mathfrak{A}$ will be called an \emph{$(M,\xi)$-derivation}.
+
+%% -----------------------------------------------------------------------
+\begin{lemma}
+For any set $M$ of formulae and free variable $\xi$, if $\mathfrak{A}$ is a
+formula belonging to $C(M, \xi)$, then $\mathfrak{A}^{[\xi]}$ is derivable
+in $S$.
+\end{lemma}
+
+\begin{proof}
+By induction with respect to the complexity of $\mathfrak{A}$.
+If the length of the derivation of $\mathfrak{A}$ is $0$, then $\mathfrak{A}$
+is an axiom. Since $\mathfrak{A}$ belongs to $C(M,\xi)$ it must have the form
+$\xi \to \xi$. In $C(M,\xi)$ it must have the form $\xi \to \mathfrak{A}$.
+\end{proof}
+
+%% -----------------------------------------------------------------------
+\begin{lemma}
+If for a given parameter $\xi$, $M$ is a set of formulae c.s.f.\ of the form
+$\xi \to \mathfrak{A}$, then any formula $\mathfrak{A}$ of $C(M, \xi)$ which
+is derivable in $S$ has an $(M, \xi)$-derivation.
+\end{lemma}
+
+\begin{proof}
+By induction with respect to the length of the derivation in $S$ of
+$\mathfrak{A}$.
+
+Suppose now that the length of the derivation of $\mathfrak{A}$ is $n+1$ and
+that the lemma holds for all formulae of $C(M,\xi)$ with derivation length
+$n$.
+
+It is easily verified by inspection of the inferences of $S$ that all
+inferences except $\to L$ have the property that if the conclusion belongs to
+$C(M,\xi)$ then so does the premise(s). Hence the induction hypothesis holds
+for the premises. Also for the conclusion.
+
+We now consider the case when the last inference in the derivation of
+$\mathfrak{A}$ is a $\to L$ of the form
+
+\[
+\dfrac{\Gamma \to \mathfrak{A}\qquad\mathfrak{B} \to \mathfrak{C}}
+      {\Gamma,\,(\mathfrak{A} \to \mathfrak{B}) \to \mathfrak{C}}
+\]
+
+(a) If both $\mathfrak{A}$ and $\mathfrak{B}$ belong to $C(M,\xi)$ then both
+premises belong to $C(M,\xi)$. By the induction hypothesis the lemma holds for
+the premises and must therefore also hold for the conclusion.
+
+(b) Suppose $\mathfrak{A}$ belongs to $M$ and $\mathfrak{B}$ to $C(M,\xi)$.
+Let $\mathfrak{C}_1, \cdots, \mathfrak{C}_n$ be a list (possibly empty) of
+all formulae belonging to $M$ in the derivation, and then belonging to
+$C(M,\xi)$.
+Now consider the formula $\Gamma^{[k]}$ which is the sequence obtained from
+$\Gamma$ by replacing each formula $\mathfrak{B}$ by $\mathfrak{B}^{[k]}$.
+Clearly this formula is derivable in $S$. Let $\Gamma_n$ be the sequence ...
+[derivation argument continues]
+
+Thus since $\mathfrak{A}$ is a formula belonging to $F_n$, $\tau(\mathfrak{A})^{[k]}$
+is derivable in $S$.
+
+Now let $S^-$ be the formal system obtained from $S$ by restricting
+$\mathfrak{B}$ in $(.)L$ to free variables. Since $\sigma^*$ faithfully maps
+any derivation of $\tilde{\mathfrak{A}}$ in $\mathrm{CPL}^-$ step by step
+into an $(M, a)$-derivation, say, of $\sigma^*(\mathfrak{A})$ any $(.)I$.
+
+\[
+\dfrac{\mathfrak{A}(\mathfrak{B}) \to \mathfrak{C}}{\mathfrak{A}(\mathfrak{C})}
+\qquad
+\dfrac{(\xi)\mathfrak{A}(\xi) \to \mathfrak{C}}{\mathfrak{A}}
+\]
+
+in $D$ is such that $\mathfrak{B}$ is a free variable. Hence $D$ is a
+derivation in $S^-$.
+\end{proof}
+
+%% -----------------------------------------------------------------------
+\noindent
+Thus the theorem remains true if $S$ is replaced by $S^-$. In fact, the
+theorem still remains true if $S$ is replaced by $S^-$ and $\sigma$, where
+$\tilde{\sigma}$ is defined like $\sigma^*$ except for taking
+$\neg I(\xi)$ in place of $U(\xi)$. Clearly if $\tilde{\mathfrak{A}}$ is
+derivable in $\mathrm{CPL}^-$ then $\tilde{\sigma}(\tilde{\mathfrak{A}})$ is
+derivable in $S^-$. On the other hand, if $\tilde{\sigma}(\tilde{\mathfrak{A}})$
+is derivable in $S^-$ it is
+
+\bigskip
+\noindent
+We now add to the $(M,a)$-derivation of the right premise the inferences
+
+\[
+\dfrac{\Gamma,\,\mathfrak{B},\,\mathfrak{B}_{1s} \to \mathfrak{C}}
+      {\Gamma,\,\mathfrak{B} \to \mathfrak{B}_{1s} \to \mathfrak{C}}
+\qquad
+\dfrac{\Gamma \to \mathfrak{C}\qquad\mathfrak{B} \to \mathfrak{D}}
+      {\Gamma,\,(\mathfrak{B} \to \mathfrak{C}) \to \mathfrak{D}}
+\]
+
+%% -----------------------------------------------------------------------
+\begin{corollary}
+Let $M$ be as in Lemma~3 and $\mathfrak{A}$ a formula in $C(M,\xi)$
+derivable in $S$ of the form $\Gamma \to \xi$, where $\Gamma$ is a sequence
+of formulae $\mathfrak{A}_1, \cdots, \mathfrak{A}_n$, such that
+$\mathfrak{A}_i$ either belongs to $M$ or is of the form
+$\mathfrak{B}_i \to \xi$ for some $\mathfrak{B}_i$, in $M$. Then the
+formulae of the form $\Delta \to \mathfrak{B}_j$, for some $j$
+$(1 \le j \le n)$, where $\Delta$ is a subsequence of formulae of $\Gamma$
+belonging to $M$, are derivable in $S$.
+\end{corollary}
+
+\begin{corollary}
+Let $M$ be as in Lemma~3 and $\mathfrak{A}$ a formula in $C(M,\xi)$
+derivable in $S$ of the form $\Gamma \to \xi$, where $\Gamma$ is a sequence
+$\mathfrak{B}_1, \cdots, \mathfrak{B}_{l0} \to \xi$ $(1 \le j \le m)$
+where $\mathfrak{B}_{1j}$ belongs to $M$. Then the formulae of the form
+$\mathfrak{B}_{1,1}, \cdots, \mathfrak{B}_{l,n} \to \mathfrak{B}_{0}$ and
+all $1 \le l \le j$, are derivable in $S$, where $\Delta$ is a subsequence
+of formulae of $\Gamma$ belonging to $M$.
+\end{corollary}
+
+\begin{proof}
+By the lemma $\mathfrak{A}$ has an $(M,\xi)$-derivation, $D$. The corollary
+follows by a simple induction with respect to the length of $D$ (i.e.\ the
+length of a maximal branch of $D$).
+\end{proof}
+
+%% -----------------------------------------------------------------------
+\noindent
+Let $M'$ be the set of formulae such that for any set of formulae $ξ \to \mathfrak{C}$,
+belonging to $M$, the formula $\xi \to \mathfrak{C}, \&\, \xi \to \mathfrak{C}\, \& \,
+\cdots$ belongs to $M'$.
+
+Then putting $\mathfrak{B}_{1j} = \xi \to \mathfrak{D}_{1j}$,
+$\mathfrak{B}_{1s}, \cdots, \mathfrak{B}_{1n} \to \xi$ are derivably
+equivalent with $(\xi \to \mathfrak{D}_{1s}) \& \cdots \& (\xi \to \mathfrak{D}_{1n})
+\to \xi$. Then from the previous corollary it follows easily.
+
+Let $\Gamma^*$ be the sequence of formulae obtained from $\Gamma$ by replacing
+each formula $\mathfrak{B}$ by $(\mathfrak{B} \to \mathfrak{D}_{1s}) \&
+\cdots \& (\mathfrak{B} \to \mathfrak{D}_{1n}) \to \mathfrak{B}$. Then clearly
+$\Gamma^* \to \xi$ is derivable in $S$. By Corollary (i) a formula of the
+form $\Theta \to \xi$ where $\Theta$ is a subsequence of formulae of
+$M$ belonging to $\Gamma^*$
+
+%% -----------------------------------------------------------------------
+\bigskip
+\noindent
+The language $L$ (the negative fragment of) intuitionistic predicate logic PL
+is obtained from the language of $S$ by adding predicate letters and function
+symbols of suitable finite types%
+\footnote{It should be noted that the standard results for the first order
+predicate calculus (e.g.\ completeness and cut elimination) continue to hold
+if function symbols of higher types occur in terms, provided that all terms
+have the type of individuals.}
+and $\bot$ (absurdity) as a logical symbol. Terms, prime formulae and formulae
+of $L$ may then be defined in the usual way. The rules of PL are the same as
+those for $S$, except for adding $\bot$ in $(.)L$ to be a term instead of a
+formula,%
+\footnote{From this observation it follows easily that $\mathrm{CPL}^*$ can be
+embedded in the theory of positive implicational algebras (PIA), i.e.\ the
+classical theory based on the axioms $\alpha$(i), (ii), (v). To see this let
+$\tilde{\mathfrak{A}}$ be the formula obtained from $\tilde{\mathfrak{A}}$,
+(here taking $U(\xi)$ to be $\neg I(\xi)$) by replacing quasi prime formulae
+of the form $I(\xi)$ by $(I(\xi) \to c_i) \to c_i$:
+\[
+I(c \to \xi) \supset c_i) \to ((c \to \xi_2) \supset c_i) \to \cdots
+\to ((c \to \xi_n) \supset c_i) \supset b).
+\]
+Now if $\tilde{\mathfrak{A}}$ is derivable in $\mathrm{CPL}^-$, then so is
+$\tilde{\mathfrak{A}}$, and hence also $\tilde{\mathfrak{A}}$. Since $\tilde{\mathfrak{A}}$
+has a derivation, $D$ say, in PIA. Then by dropping all occurrences of $I$
+in $D$ and replacing $\supset$ by $\to$ throughout we obtain a derivation of
+$\sigma(\mathfrak{A}_{11})$ in $S^-$. Hence $\tilde{\mathfrak{A}}$ is derivable
+in $S^-$.
+
+Moreover, since the theory of Heyting algebras is a conservative extension of
+PIA we have that $\mathrm{CPL}^*$ can be embedded in the theory of Heyting
+algebras.}
+and taking for axioms all formulae of the form $\mathfrak{A} \to \mathfrak{A}$
+and $\bot \to \mathfrak{A}$.
+
+A \emph{derivation in PL (CPL) from a class of formulae $K$}, if there is a
+tree which is constructed like a derivation of PL (CPL), except for allowing
+at the top of branches besides axioms to occur formulae of $K$ (which in the
+case of CPL are classical).
+
+A formula $\mathfrak{B}$ is \emph{derivable in PL (CPL) from a class of
+formulae $K$}, if there is a tree which is constructed like a derivation of PL
+(CPL) for allowing at the top of any branch to occur formulae of $K$.
+
+A formula $\mathfrak{A}$ of $L$ will be said to be a \emph{primary formula},
+if it is of the form $\mathfrak{A}_1, \cdots, \mathfrak{A}_n \to \mathfrak{A}_{n+1}$,
+where each $\mathfrak{A}_i$ is a prime formula.
+
+A set $N$ of primary formulae will be said to be \emph{closed} if it
+satisfies the following conditions:
+\begin{enumerate}[(i)]
+\item if $\mathfrak{C}(\xi)$ belongs to $N$, then so does $\mathfrak{C}(\eta)$,
+  for any free variable $\xi$ and term $\eta$ (where occurrences of $\xi$ in
+  $\mathfrak{C}(\eta)$ occur in $\eta$ only),
+\item if $\Gamma, \mathfrak{A}, \Delta \to \mathfrak{C}$ belongs to $N$ and
+  $\mathfrak{A} \to \mathfrak{B}$ belongs to $N$, then so does
+  $\Gamma, \mathfrak{B}, \Delta \to \mathfrak{C}$,
+\item if $\mathfrak{A}, \mathfrak{A} \to \mathfrak{B}$ belongs to $N$, then
+  so does $\mathfrak{A} \to \mathfrak{B}$,
+\item if $\Gamma \to \mathfrak{B}$ and $\mathfrak{B} \to \mathfrak{C}$ belong
+  to $N$, then so does $\Gamma \to \mathfrak{C}$.
+\end{enumerate}
+For any set $P$ of primary formulae the closure $\mathrm{C1}(P)$ will be the
+smallest closed set of primary formulae containing $P$.
+
+Let $\mathrm{PL}^*$ be the formal system obtained from PL by adding the cut
+rule. [It] is easily seen that for a primary formula $\mathfrak{A}$,
+$\mathfrak{A}$ is derivable from $\mathrm{C1}(P)$ in PL if and only if
+$\mathfrak{A}$ is derivable in $\mathrm{PL}^*$ from the closure of the set of
+primary formulae $\bar{K}$, where $\bar{K}$ is the class of formulae
+$\bar{\mathfrak{A}}$ with $\mathfrak{A}$ in $K$.
+
+%% -----------------------------------------------------------------------
+\begin{lemma}
+Let $P$ be a set of primary formulae, then any formula derivable from $P$ in
+$\mathrm{PL}^*$ is derivable in PL from $\mathrm{C1}(P)$.
+\end{lemma}
+
+The proof is analogous to the proof in \cite[§3]{Schuttif1950} of the
+corresponding result for classical predicate logic.
+
+\begin{corollary}
+(i) Let $\bar{\mathfrak{A}}$ be the formula obtained from $\mathfrak{A}$ by
+replacing every quasi prime formula $(\mathfrak{B} \to \bot)$ in $\mathfrak{A}$
+by $(\mathfrak{B} \to \bot) \to \bot$. Let $\bar{\Gamma}$ be a finite
+sequence of the universal closures of quasi prime formulae and $\bar{\Gamma}$
+the sequence obtained from $\Gamma$ by replacing $\Gamma$ by $\bar{\mathfrak{B}}$.
+Then for every classical formula $\mathfrak{A}$, $\bar{\Gamma}, \bar{\mathfrak{A}} \to \mathfrak{A}$
+is derivable in PL if and only if $\bar{\Gamma} \to \mathfrak{A}$ is derivable
+in PL.
+\end{corollary}
+
+\begin{proof}
+Suppose $\bar{\Gamma} \to \mathfrak{A}$ is derivable in PL, then clearly so
+is $\bar{\Gamma} \to \bar{\mathfrak{A}}$. But since $\mathfrak{A}$ and
+$\bar{\mathfrak{A}}$ are derivably equivalent in PL, $\bar{\Gamma} \to
+\mathfrak{A}$ is derivable in PL. Hence $\bar{\Gamma} \to \mathfrak{A}$ is
+derivable in PL.
+
+Suppose now $\bar{\Gamma} \to \mathfrak{A}$ is derivable in PL. Since it is
+easily seen that for a primary formula $\mathfrak{A}$, $\mathfrak{A} \to
+\mathfrak{A}$ is derivable in PL, we have for every formula $\mathfrak{B}$ in
+$\bar{\Gamma}$, $\mathfrak{B} \to \bar{\mathfrak{B}}$ is derivable in PL.
+Hence $\bar{\Gamma} \to \mathfrak{A}$ is derivable in PL.
+\end{proof}
+
+\begin{corollary}
+(ii) Let $K$ be a class of primary formulae. Then a classical formula
+$\mathfrak{A}$ is derivable in PL from $K$ if and only if $\mathfrak{A}$
+is derivable in CPL from $\bar{K}$, where $\bar{K}$ is the class of formulae
+$\bar{\mathfrak{A}}$ with $\mathfrak{A}$ in $K$.
+\end{corollary}
+
+This follows immediately from Corollary (ii) of Lemma~4.
+
+In particular, from Corollary (ii) of Lemma~4 it follows immediately that a
+formula $\mathfrak{A}$ is derivable in classical predicate logic with identity
+$\mathrm{CPL}^*$ if and only if $\mathfrak{A}$ is a classical formula of $L$
+(possibly containing the identity symbol) derivable in PL from the closure of
+the set of primary formulae
+\begin{enumerate}[(i)]
+\item $\xi = \xi$
+\item $\xi = \eta \to (\mathfrak{A}(\xi) \to \mathfrak{A}(\eta))$, where
+  $\mathfrak{A}(\xi)$ is a prime formula.
+\end{enumerate}
+
+A structure $\mathscr{S} = \langle D, I, \Rightarrow, \bigcap\rangle$ where
+$D$ is a nonempty set, $I$ a subset of $D$, $\Rightarrow$ a mapping from
+$D^2$ into $D$, and $\bigcap$ a mapping from $D^D$ into $D$, will be said to
+be an \emph{$S$-structure} if it satisfies the following set $\alpha$ of
+conditions:
+\begin{enumerate}[(i)]
+\item $I(\xi \Rightarrow (\eta \Rightarrow \xi))$,
+\item $I((\xi \Rightarrow (\eta \Rightarrow \zeta)) \Rightarrow
+    ((\xi \Rightarrow \eta) \Rightarrow (\xi \Rightarrow \zeta)))$,
+\item $I(\bigcap \xi(\xi), \xi(\eta))$, where $\eta$ is a term,
+\item if $I(\xi \Rightarrow \eta(\xi))$ belongs to $\alpha$, provided $\xi$
+  is a free variable not occurring in the term
+  $\xi \Rightarrow \bigcap_\eta \eta(x)$,
+\item $I(\xi),\; I(\xi \Rightarrow \eta) \Rightarrow I(\eta)$.
+\end{enumerate}
+In (iii) and (v) $x$ is an arbitrary bound variable. In (i)--(v) the symbols
+$I, \Rightarrow, \bigcap$ are used as formal symbols of $L$ with the
+understanding that their interpretations in $\mathscr{S}$ are denoted by the
+same symbol, respectively, and $\xi, \eta, \zeta$ are terms constructed from
+free variables (taken to range over $D$) and the operation symbols $\Rightarrow$
+and $\bigcap$.
+
+The same convention will be adopted for the extensions of $S$-structures
+considered below.
+
+Evidently every $S$-structure is a lattice with respect to the ordering
+relation $I(\xi \Rightarrow \eta)$. The lattice theoretic operations $\cap$
+and $\cup$ may be defined such that for any two elements $\xi$ and $\eta$ of
+$D$
+\[
+\xi \cap \eta \quad\text{stands for}\quad
+\bigcap_{x} \bigl[(\xi \Rightarrow (\eta \Rightarrow x)) \Rightarrow x\bigr]
+\]
+and
+\[
+\xi \cup \eta \quad\text{stands for}\quad
+\bigcap_{x} \bigl[(\xi \Rightarrow x) \cap (\eta \Rightarrow x)\bigr]
+  \Rightarrow x.
+\]
+Moreover, any $S$-structure has a least element $0$ and a greatest element
+$\mathbf{1}$ definable as $\bigcap_x x$ and $\bigcap_x (x \Rightarrow x)$,
+respectively. Recalling the cut elimination property and Hilbert type
+formalisation of ISPL it is easy to prove
+
+%% -----------------------------------------------------------------------
+\begin{lemma}
+Let $\mathfrak{A}$ be a prime formula in the language of $S$-structures and
+$\mathfrak{A}'$ the formula in the language of $S$ obtained from $\mathfrak{A}$
+by dropping $I$ and replacing $\Rightarrow$ and $\bigcap_\xi$ by $\to$ and
+$(\xi)$, respectively. Then $\mathfrak{A}$ belongs to $\mathrm{C1}(\alpha)$
+if and only if $\mathfrak{A}'$ is derivable in $S$.
+\end{lemma}
+
+Note also that since all formulae of $\alpha$ are primary we can by Lemma~4
+present the theory of $S$-structures in cut-free form taking $\mathrm{C1}(\alpha)$
+as the set of nonlogical axioms.
+
+We now extend the theory of $S$-structures by adding the parameters
+$a, b, c_1, \cdots, c_n$ and an $n$-ary predicate letter $A$ subject to the
+following set $\beta$ of conditions:
+\begin{enumerate}[(vi)]
+\item $I(a)$, $I(b)$, $I(c_1)$, $I(c_n)$,
+\item $(I\xi \Rightarrow \eta)$,
+  $A(\xi_1, \cdots, \xi_{n-1}, \xi, \xi_1, \cdots, \xi_n)
+   \to A(\xi_1, \cdots, \xi_{n-1}, \eta, \xi_1, \cdots, \xi_n)$.
+\end{enumerate}
+
+Let $C_{LA}$ be the set of classical formulae derivable in PL from
+$\mathrm{C1}(\alpha \cup \beta)$.
+
+A structure $\langle D, I, A, \Rightarrow, \bigcap\rangle$ where
+$A \subseteq D^n$ will be said to be an \emph{expanded $S$-structure} if it
+is an $S$-structure if it satisfies the conditions $\beta$(vi)--(vii) under
+an assignment of elements of $D$ to the parameters $a, b, c_1, \cdots, c_n$.
+
+We now define a mapping $\tau$ of the set of formulae of the language of
+$C_{LA}$ into the set of formulae of the language of $S$.
+\begin{align*}
+\tau(\xi) &= \xi, \quad\text{if $\xi$ is a variable,}\\
+\tau(\xi = \eta) &= (\eta \Rightarrow \xi) \cap (\xi \Rightarrow \eta), \\
+\tau(\bigcap_\xi(\xi)) &= (\eta)\,\tau(\xi(\eta)), \\
+\tau(\bot) &= a, \\
+\tau(\mathfrak{A} \mathbin{\&} \mathfrak{B}) &= \tau(\mathfrak{A}) \cap \tau(\mathfrak{B}), \\
+\tau(\mathfrak{A} \vee \mathfrak{B}) &= \tau(\mathfrak{A}) \cup \tau(\mathfrak{B}), \\
+\tau(\mathfrak{A} \to \mathfrak{B}) &= \tau(\mathfrak{A}) \Rightarrow \tau(\mathfrak{B}), \\
+\tau((\xi)\mathfrak{A}(\xi)) &= (\xi)\,\tau(\mathfrak{A}(\xi)), \\
+\tau((E\xi)\mathfrak{A}(\xi)) &= (E\xi)\,\tau(\mathfrak{A}(\xi)).
+\end{align*}
+
+In the proof of the next lemma reference will be made to the following sets of
+formulae:
+\begin{align*}
+F_1 &\;=\;\text{the set of formulae of the form } b, c_1, \cdots, c_n \to \mathfrak{A},\\
+F_2 &\;=\;\text{the set of formulae of the form } a \to \mathfrak{A}, \text{ where } \mathfrak{A} \text{ belongs to } F_3,\\
+F_{3,i} &\;=\;\text{the set of formulae of the form } (c_1, \cdots, c_n \to \mathfrak{A}) \to c_i,\\
+F_3  &\;=\;\text{the set of formulae of the form } h \to \mathfrak{A}, \text{ where } \mathfrak{A} \text{ belongs to } F_{3,i},\\
+F_4  &\;=\;\text{the set of formulae of the form } \mathfrak{A}_i \cdots \mathfrak{A}_k \to \mathfrak{A}_{k+1}, \\
+     &\phantom{\;=\;}\text{where } \mathfrak{A}_i \text{ belongs to } F_{4,n},\\
+F_5  &\;=\;\text{the set of formulae of the form }
+       a \to \mathfrak{A}, \text{ where } \mathfrak{A}_i \text{ belongs to } F_5,\\
+F_6  &\;=\;\text{the set of formulae of the form } a \to \mathfrak{A}, \text{ where } \mathfrak{A} \text{ belongs to } F_5.
+\end{align*}
+
+%% -----------------------------------------------------------------------
+Let $N$ be the union of $F_1$ and $F_4$, and $M$ the union of $F_2$ and $F_6$.
+
+A quasi formula obtained from a formula $\mathfrak{B}$ in $M$ by substituting
+bound variables not occurring in $\mathfrak{B}$ for one or more free variables
+other than parameters will be said to be \emph{quasi formulae of $M$}.
+
+Note that any (quasi) formula of $M$ has one of the following forms:
+\begin{enumerate}[(i)]
+\item $a, b, c_1, \cdots, c_n \to \mathfrak{A}$,
+\item $a, b, [c_1, \cdots, c_n \to \mathfrak{A}_1], \cdots,
+  [b, [c_1, \cdots, c_n \to \mathfrak{A}_m] \to c_n] \to b$.
+\end{enumerate}
+The (quasi) formulae $\mathfrak{A}_1$ in (i) and (ii) will be said to be
+the main parts of the quasi formulae (i) and (ii), respectively.
+
+An occurrence $\mathfrak{C}$ of a quasi formula will be said to be a main
+part of an $(M, a)$-formula if $\mathfrak{C}$ is the main part of a quasi
+subformula of $\mathfrak{A}$ belonging to $M$.
+
+%% -----------------------------------------------------------------------
+\begin{lemma}
+For any formula $\mathfrak{A}$ of the language of $S$ there is at most one
+formula $\mathfrak{B}$ of the language of $C_{LA}$ such that $\mathfrak{A} = \tau(\mathfrak{B})$.
+\end{lemma}
+
+This follows easily from the observation that any occurrence of $\to$ and
+$(\xi)$ corresponds under $\tau$ to $\Rightarrow$ and $\bigcap$, respectively,
+only if it is contained in a main part of $\mathfrak{A}$.
+
+%% -----------------------------------------------------------------------
+\begin{lemma}
+A formula $\mathfrak{A}$ belongs to $C_{LA}$ if and only if $\tilde{\mathfrak{A}}$
+is classical and $\tau(\tilde{\mathfrak{A}})$ is derivable in $S$.
+\end{lemma}
+
+\begin{proof}
+Suppose $\mathfrak{A}$ belongs to $C_{LA}$. Then it has a derivation, $D$
+say, in PL from $\mathrm{C1}(\alpha \cup \beta)$. Let $T(D)$ be the tree of
+formulae obtained from $D$ by replacing each formula $\mathfrak{A}$ by
+$\tau(\mathfrak{A})$. Then it is easily seen that each formula at the top of
+$T(D)$ is derivable in $S$. Moreover, every inference of PL in $D$ is carried
+into an inference of $S$. Hence $\tau(\mathfrak{A})$ is derivable in $S$.
+
+Suppose now for classical $\mathfrak{A}$, $\tau(\mathfrak{A})$ is derivable
+in $S$. Clearly $\tau^*(\mathfrak{A})$ is derivable in $S$. Suppose now
+$\sigma^*(\mathfrak{A})$ is derivable in $S$. Then also the formula
+$\mathfrak{B}$ obtained from $\mathfrak{A}$ by $\sigma^*$ by replacing
+$c$ throughout by $a, b, c_1, \cdots, c_n$, and $b$ by $a$ is derivable in
+$S$. But clearly $\mathfrak{B}$ is derivably equivalent with $\tau(\mathfrak{A})$.
+Hence by the theorem, $\mathfrak{A}$ is derivable in $\mathrm{CPL}^*$.
+\end{proof}
+
+%% -----------------------------------------------------------------------
+\noindent
+Now let $S^-$ be the formal system obtained from $S$ by restricting
+$\mathfrak{B}$ in $(.)L$ to free variables. Since $\sigma^*$ faithfully maps
+any derivation of $\tilde{\mathfrak{A}}$ in $\mathrm{CPL}^*$ step by step
+into an $(M, a)$-derivation, say, of $\sigma^*(\tilde{\mathfrak{A}})$ any
+$(.)I$.
+
+Now if $\tilde{\mathfrak{A}}$ is derivable in $\mathrm{CPL}^-$, then so is
+$\tilde{\mathfrak{A}}$, and hence also $\tilde{\mathfrak{A}}$. Since
+$\tilde{\mathfrak{A}}$ has a derivation, $D$ say, in PIA. Then by dropping
+all occurrences of $I$ in $D$ and replacing $\supset$ by $\to$ throughout we
+obtain a derivation of $\sigma(\mathfrak{A}_{11})$ in $S^-$. Hence
+$\tilde{\mathfrak{A}}$ is derivable in $S^-$.
+
+%% -----------------------------------------------------------------------
+\bigskip
+\noindent
+We shall now prove more generally that if
+$\mathfrak{A}_1, \cdots, \mathfrak{A}_n, A(\nu_1, \cdots, \nu_{k-1},
+\nu_k, \nu_{k+1}, \cdots, \nu_n)$
+is derivable in $S$ for arbitrary terms $\nu_1, \cdots, \nu_k, \nu_{k+1},
+\nu_{k+1}, \cdots, \nu_n$ in the language of $S$-structures.
+From these we get by cuts the formula
+$I(\eta_h), \cdots, I(\eta_n), A(\nu_1, \cdots, \nu_{k-1}, \nu_k,
+\nu_{k+1}, \cdots, \nu_n)$
+for arbitrary terms $\nu_1, \cdots, \nu_k, \nu_{k+1}, \nu_n$ in the language
+of $S$-structures.
+From these we get by cuts the formula $A(\xi_1, \cdots, \xi_k, \xi_{k+1},
+\cdots, \xi_n)$.
+Hence $\mathfrak{A}$ belongs to $\mathrm{C1}(\alpha \cup \beta)$.
+
+Hence the formulae $I(\eta_h), \cdots, I(\eta_n), A(\nu_1, \cdots,
+\nu_{n-1}, \nu_k, \nu_{k+1}, \cdots, \nu_n)$ for any $\mathfrak{A}$ belonging
+to $F_n$ $(t(\mathfrak{A}) = \tau(\tau_n))$ are derivable in $S$. Now
+$\bar{\mathfrak{X}}_k = \tau(\xi_k)$, $\bar{\mathfrak{Y}}_h = \tau(\eta_h)$
+and $\bar{\mathfrak{Z}}_k = \tau(\eta_k)$ for some terms $\xi_k$, $\eta_h$,
+$\eta_k$ in the language of $S$-structures, and $\bar{\mathfrak{Z}}_k =
+\tau(\xi_k)$.
+
+%% -----------------------------------------------------------------------
+\bigskip\noindent
+Hence the formulae
+\[
+(c_k \to \mathfrak{B}_n^{[k]}), \cdots, (c_n \to \mathfrak{B}_n^{[k]}),
+(c_k \to \bar{\mathfrak{X}}_k^{[k]}) \to (c_k \to \bar{\mathfrak{Z}}_k)
+\quad (1 \le k \le n)
+\]
+are derivable in $S$, where $h_1, \cdots, h_s$ is a subsequence of
+$1, \cdots, k$ and the $\mathfrak{B}_m$ are of the form $c_1, \cdots, c_m
+\to \mathfrak{A}_n$ and the $\bar{\mathfrak{X}}_k$ are the formulae
+$(c_1, \cdots, c_n \to \bar{\mathfrak{X}}_k) \to c_n$ and the
+$\mathfrak{B}_{m+1}$ belong to $(c_1, \cdots, c_n, \mathfrak{X}_k) \to c_k$.
+
+Hence the formulae
+\[
+c_1, \cdots, c_n, c_{k+1}, \cdots, c_n \to \mathfrak{B}_m^{[k]},
+\bigl[(c_k \to \mathfrak{B}_n^{[k]}) \to c_k\bigr],
+\cdots,
+\bigl[(c_k \to \mathfrak{B}_n^{[k]}) \to c_k\bigr]
+\]
+are derivable in $S$, and hence by Lemma~1 so are the formulae
+
+\[
+c_1, \cdots, c_n, c_{k+1}, \cdots, c_n,
+\bigl[(c_k \to \mathfrak{B}_n) \to c_k\bigr],
+\cdots,
+\bigl[(c_k \to \mathfrak{B}_n) \to c_k\bigr]
+\to c_k \quad (1 \le k \le n).
+\]
+
+Taking $L_k$ to be the set of formulae belonging to $C(L_k, c_k)$ satisfying
+the conditions of Lemma~3, Corollary (i).
+
+Hence the formulae
+$(c_k \to \mathfrak{B}_n^{[k]}), (c_k \to \mathfrak{B}_n^{[k]}),
+\cdots, (c_n, \to \mathfrak{B}_n^{[k]}), (c_k \to \bar{\mathfrak{X}}_k^{[k]})
+\to (c_k \to \bar{\mathfrak{Z}}_k^{[k]})$
+and therefore also the formulae
+$c_1, c_2, \cdots, c_n, \mathfrak{Y}_{h1}, \cdots, \mathfrak{Y}_{hn},
+\bar{\mathfrak{X}}_k \to \bar{\mathfrak{Z}}_k$ $(1 \le k \le n)$ are
+derivable in $S$. Now $\bar{\mathfrak{X}}_k = \tau(\xi_k)$,
+$\mathfrak{Y}_{h1} = \tau(\eta_{h1})$ and $\bar{\mathfrak{Z}}_k = \tau(\eta_k)$
+for some terms $\xi_k$, $\eta_h$ of the language of $S$-structures.
+
+%% -----------------------------------------------------------------------
+\bigskip\noindent
+Hence by Lemma~5 the formula
+\[
+I(a \Rightarrow (b \Rightarrow (c_1 \Rightarrow \cdots \Rightarrow
+  (c_n \Rightarrow (\xi_n \Rightarrow \cdots \Rightarrow
+  (\xi_k \Rightarrow \xi_k \Rightarrow \cdots)
+\]
+$(1 \le k \le n)$
+
+belongs to $\mathrm{C1}(\alpha \cup \beta)$.
+
+From these we get by repeated applications of $\alpha$(i)--(v) and
+$\beta$(vi)--(vii) and cuts, the formulae
+
+\[
+I(\eta_{h_1}), \cdots, I(\eta_{h_s}),\,
+A(\nu_1, \cdots, \nu_{k-1}, \nu_k, \nu_{k+1}, \cdots, \nu_n)
+\]
+for arbitrary terms $\nu_1, \cdots, \nu_k, \nu_{k+1}, \nu_n$ in the language
+of $S$-structures.
+From these we get by cuts the formula
+$A(\xi_1, \cdots, \xi_k, \xi_{k+1}, \cdots, \xi_n)$.
+Hence $\mathfrak{A}$ belongs to $\mathrm{C1}(\alpha \cup \beta)$.
+
+%% -----------------------------------------------------------------------
+\bigskip
+\noindent
+$S(\mathscr{A}) \upharpoonright D = \langle D, l, A, \Rightarrow, \bigcap\rangle$
+
+a prime formula of the form $A(\xi_1, \cdots, \xi_n)$ is true for
+$\xi_1, \cdots, \xi_n \in D$ if and only if $A(\xi_1, \cdots, \xi_n)$ holds
+in $S(\mathscr{A}) \upharpoonright D$. Let the mapping $\hat{\tau}$ be such
+that for any $\mathfrak{A} \in \mathscr{A}$, $\hat{\tau}(\mathfrak{A})$ is the
+set of structures $S(\mathscr{B})$ with $\mathscr{B} \in K$. Then from
+Lemmas~7 and~8 we get our main result.
+
+%% -----------------------------------------------------------------------
+\begin{theorem}
+Let $\tilde{\mathfrak{A}}$ be a classical formula of $L$ without function
+symbols and containing besides $=$ occurrences only of a single $n$-ary
+predicate letter $A$. Then $\tilde{\mathfrak{A}}$ is derivable in
+$\mathrm{CPL}^*$ if and only if $\tau^*(\tilde{\mathfrak{A}})$ is derivable
+in $S$.
+\end{theorem}
+
+Evidently the limitation of the number of predicate letters is a trivial
+restriction, since a finite number of $n_i$-ary ($n_i < n$) predicate letters
+$A_1, \cdots, A_k$ can be introduced in terms of a single $n$-ary one by
+putting $\mathfrak{A} \mathbin{\&} \mathfrak{B} = A(\xi_1, \cdots, \xi_n) =
+B(d_1, \xi_1, \cdots, \xi_n, \xi_{n+1}, \cdots, \xi_n) =
+A_i(\xi_{n+1}, \cdots, \xi_n)$.
+
+%% -----------------------------------------------------------------------
+\bigskip\noindent
+The proof of the counterpart of Lemma~7 proceeds analogously to that of
+Lemma~7.
+
+For the proof of the counterpart of Lemma~8 we use Kripke structures
+$\langle K, R, \mathscr{A}\rangle$, where $K$ is a family of structures, $R$
+a reflexive and transitive relation and $\mathscr{A} \in K$, noting that any
+such Kripke structure can be extended to another
+$\langle K', R', \mathscr{A}'\rangle$ such that $K'$ is the set of structures
+$S(\mathscr{B})$ with $\mathscr{B} \in K$, $\mathscr{A}' = S(\mathscr{A})$
+and $R'$ is defined such that $R'(S(\mathscr{B}_1), S(\mathscr{B}_2)) =
+R(\mathscr{B}_1, \mathscr{B}_2)$ for any $\mathscr{B}_1, \mathscr{B}_2 \in K$.
+
+%% -----------------------------------------------------------------------
+\begin{thebibliography}{9}
+\bibitem{Prawitz1965}
+  Dag Prawitz,
+  \textit{Natural deduction},
+  Almqvist and Wiksell, Stockholm, 1965.
+
+\bibitem{Prawitz1970}
+  \rule{2em}{0.4pt},
+  \textit{Some results for intuitionistic logic with second order
+  quantification rules},
+  \textit{Intuitionism and proof theory} (editors A.~Kino, J.~Myhill and
+  R.~E.~Vesley),
+  North-Holland, Amsterdam, 1970, pp.~259--270.
+
+\bibitem{Schuttif1950}
+  Kurt Sch\"{u}tte,
+  \textit{Schlussweisenkalk\"{u}le der Pr\"{a}dikatenlogik},
+  \textbf{Mathematische Annalen}, vol.~22 (1950), pp.~47--65.
+\end{thebibliography}
+
+\bigskip
+\begin{center}
+  \textsc{Universiteit van Amsterdam}\\
+  \textsc{Amsterdam, Netherlands}
+\end{center}
+
+\end{document}
